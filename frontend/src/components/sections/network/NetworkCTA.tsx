@@ -43,10 +43,10 @@ export function NetworkCTA() {
           >
             <Link href="/contact" className="btn-red group">
               Get a Quote
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
             <Link href="/services" className="btn-outline text-sm">
-              View Services <ArrowRight size={14} />
+              View Services <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </motion.div>
         </motion.div>

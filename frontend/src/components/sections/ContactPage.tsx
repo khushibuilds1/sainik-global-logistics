@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Send } from 'lucide-react'
+import { ArrowRight, Send } from 'lucide-react'
 
 type FormData = {
   name: string
@@ -40,10 +40,10 @@ export function ContactPage() {
   // -----------------------------------------
 
   const inputClass =
-    'w-full bg-brand-dark-3 border border-white/10 text-white placeholder-white/20 px-4 py-3 text-sm focus:outline-none focus:border-brand-red transition-colors'
+    'w-full rounded-2xl bg-white/[0.02] border border-white/10 text-white placeholder:text-white/30 px-4 py-3.5 text-sm focus:outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20 transition-all'
 
   const errorInputClass =
-    'w-full bg-brand-dark-3 border border-red-500 text-white placeholder-white/20 px-4 py-3 text-sm focus:outline-none focus:border-red-500 transition-colors'
+    'w-full rounded-2xl bg-white/[0.02] border border-red-500 text-white placeholder:text-white/30 px-4 py-3.5 text-sm focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all'
 
   // -----------------------------------------
   // Validate form
@@ -269,239 +269,143 @@ export function ContactPage() {
 
       <section className="section-padding bg-brand-dark-2">
         <div className="container-custom">
+          <div className="mx-auto max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="rounded-[28px] border border-white/10 bg-brand-dark p-5 md:p-8 shadow-[0_30px_80px_rgba(0,0,0,0.28)]"
+            >
+              <div>
+                {submitted ? (
+                  <div className="rounded-[24px] border border-brand-red/30 bg-brand-red/[0.04] p-12 text-center">
+                    <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-brand-red/30 bg-brand-red/[0.06]">
+                      <Send size={22} className="text-brand-red" />
+                    </div>
 
-          {/* =========================================
-              FORM
-          ========================================== */}
+                    <p className="mb-2 font-display text-2xl font-bold uppercase text-white">
+                      Message Sent!
+                    </p>
 
-          <div>
-            {submitted ? (
-              /* =====================================
-                 SUCCESS MESSAGE
-              ====================================== */
-
-              <div className="glass border border-brand-red/30 p-12 text-center">
-
-                <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-brand-red/30">
-                  <Send
-                    size={22}
-                    className="text-brand-red"
-                  />
-                </div>
-
-                <p className="font-display font-bold text-white text-2xl uppercase mb-2">
-                  Message Sent!
-                </p>
-
-                <p className="text-white/50">
-                  Thank you for contacting us. We'll respond within
-                  24 hours.
-                </p>
-              </div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                noValidate
-                className="space-y-4"
-              >
-
-                <p className="eyebrow mb-4">
-                  Send a Message
-                </p>
-
-                {/* =====================================
-                    API ERROR
-                ====================================== */}
-
-                {apiError && (
-                  <div className="border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
-                    {apiError}
+                    <p className="text-white/60">
+                      Thank you for contacting us. We’ll respond within 24 hours.
+                    </p>
                   </div>
+                ) : (
+                  <form onSubmit={handleSubmit} noValidate className="space-y-5">
+                    <div className="flex items-center justify-between gap-4">
+                      <div>
+                        <p className="eyebrow mb-2">Send a Message</p>
+                        {/* <h3 className="font-display text-2xl uppercase tracking-[-0.04em] text-white">
+                          Request a callback
+                        </h3> */}
+                      </div>
+                    </div>
+
+                    {apiError && (
+                      <div className="rounded-2xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+                        {apiError}
+                      </div>
+                    )}
+
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <div>
+                        <label className="mb-2 block text-[10px] uppercase tracking-[0.22em] text-white/45">
+                        
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="Your Name *"
+                          value={form.name}
+                          onChange={(e) => handleChange('name', e.target.value)}
+                          maxLength={50}
+                          className={errors.name ? errorInputClass : inputClass}
+                        />
+                        {errors.name && <p className="mt-1 text-xs text-red-400">{errors.name}</p>}
+                      </div>
+
+                      <div>
+                        <label className="mb-2 block text-[10px] uppercase tracking-[0.22em] text-white/45">
+                          
+                        </label>
+                        <input
+                          type="email"
+                          placeholder="Email *"
+                          value={form.email}
+                          onChange={(e) => handleChange('email', e.target.value)}
+                          maxLength={100}
+                          className={errors.email ? errorInputClass : inputClass}
+                        />
+                        {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="mb-2 block text-[10px] uppercase tracking-[0.22em] text-white/45">
+                        
+                      </label>
+                      <input
+                        type="tel"
+                        placeholder="Phone"
+                        value={form.phone}
+                        onChange={(e) => handleChange('phone', e.target.value)}
+                        maxLength={20}
+                        className={errors.phone ? errorInputClass : inputClass}
+                      />
+                      {errors.phone && <p className="mt-1 text-xs text-red-400">{errors.phone}</p>}
+                    </div>
+
+                    <div>
+                      <label className="mb-2 block text-[10px] uppercase tracking-[0.22em] text-white/45">
+                        
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Subject *"
+                        value={form.subject}
+                        onChange={(e) => handleChange('subject', e.target.value)}
+                        maxLength={100}
+                        className={errors.subject ? errorInputClass : inputClass}
+                      />
+                      {errors.subject && <p className="mt-1 text-xs text-red-400">{errors.subject}</p>}
+                    </div>
+
+                    <div>
+                      <label className="mb-2 block text-[10px] uppercase tracking-[0.22em] text-white/45">
+                        
+                      </label>
+                      <textarea
+                        rows={5}
+                        placeholder="Your Message *"
+                        value={form.message}
+                        onChange={(e) => handleChange('message', e.target.value)}
+                        maxLength={1000}
+                        className={errors.message ? errorInputClass : inputClass}
+                      />
+
+                      <div className="mt-1 flex items-center justify-between gap-3">
+                        {errors.message ? (
+                          <p className="text-xs text-red-400">{errors.message}</p>
+                        ) : (
+                          <span />
+                        )}
+
+                        <p className="text-[10px] text-white/30">{form.message.length}/1000</p>
+                      </div>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="btn-red w-full justify-center disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                      {!isSubmitting && <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />}
+                    </button>
+                  </form>
                 )}
-
-                {/* =====================================
-                    NAME + EMAIL
-                ====================================== */}
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-                  {/* Name */}
-
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Your Name *"
-                      value={form.name}
-                      onChange={(e) =>
-                        handleChange(
-                          'name',
-                          e.target.value
-                        )
-                      }
-                      maxLength={50}
-                      className={
-                        errors.name
-                          ? errorInputClass
-                          : inputClass
-                      }
-                    />
-
-                    {errors.name && (
-                      <p className="mt-1 text-xs text-red-400">
-                        {errors.name}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Email */}
-
-                  <div>
-                    <input
-                      type="email"
-                      placeholder="Email *"
-                      value={form.email}
-                      onChange={(e) =>
-                        handleChange(
-                          'email',
-                          e.target.value
-                        )
-                      }
-                      maxLength={100}
-                      className={
-                        errors.email
-                          ? errorInputClass
-                          : inputClass
-                      }
-                    />
-
-                    {errors.email && (
-                      <p className="mt-1 text-xs text-red-400">
-                        {errors.email}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                {/* =====================================
-                    PHONE
-                ====================================== */}
-
-                <div>
-                  <input
-                    type="tel"
-                    placeholder="Phone"
-                    value={form.phone}
-                    onChange={(e) =>
-                      handleChange(
-                        'phone',
-                        e.target.value
-                      )
-                    }
-                    maxLength={20}
-                    className={
-                      errors.phone
-                        ? errorInputClass
-                        : inputClass
-                    }
-                  />
-
-                  {errors.phone && (
-                    <p className="mt-1 text-xs text-red-400">
-                      {errors.phone}
-                    </p>
-                  )}
-                </div>
-
-                {/* =====================================
-                    SUBJECT
-                ====================================== */}
-
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Subject *"
-                    value={form.subject}
-                    onChange={(e) =>
-                      handleChange(
-                        'subject',
-                        e.target.value
-                      )
-                    }
-                    maxLength={100}
-                    className={
-                      errors.subject
-                        ? errorInputClass
-                        : inputClass
-                    }
-                  />
-
-                  {errors.subject && (
-                    <p className="mt-1 text-xs text-red-400">
-                      {errors.subject}
-                    </p>
-                  )}
-                </div>
-
-                {/* =====================================
-                    MESSAGE
-                ====================================== */}
-
-                <div>
-                  <textarea
-                    rows={5}
-                    placeholder="Your Message *"
-                    value={form.message}
-                    onChange={(e) =>
-                      handleChange(
-                        'message',
-                        e.target.value
-                      )
-                    }
-                    maxLength={1000}
-                    className={
-                      errors.message
-                        ? errorInputClass
-                        : inputClass
-                    }
-                  />
-
-                  <div className="flex justify-between mt-1">
-
-                    {errors.message ? (
-                      <p className="text-xs text-red-400">
-                        {errors.message}
-                      </p>
-                    ) : (
-                      <span />
-                    )}
-
-                    <p className="text-[10px] text-white/30">
-                      {form.message.length}/1000
-                    </p>
-                  </div>
-                </div>
-
-                {/* =====================================
-                    SUBMIT BUTTON
-                ====================================== */}
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="btn-primary w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? (
-                    'Sending...'
-                  ) : (
-                    <>
-                      Send Message
-                      <Send size={14} />
-                    </>
-                  )}
-                </button>
-
-              </form>
-            )}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

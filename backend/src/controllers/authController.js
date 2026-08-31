@@ -1,8 +1,10 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 
+const getJwtSecret = () => process.env.JWT_SECRET || 'sainik-global-development-secret-key-2026'
+
 const signToken = (id) =>
-  jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN || '7d' })
+  jwt.sign({ id }, getJwtSecret(), { expiresIn: process.env.JWT_EXPIRES_IN || '7d' })
 
 // POST /api/auth/login
 const login = async (req, res, next) => {

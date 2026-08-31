@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 
+const getJwtSecret = () => process.env.JWT_SECRET || 'sainik-global-development-secret-key-2026'
+
 const protect = async (req, res, next) => {
   let token
 
@@ -13,7 +15,7 @@ const protect = async (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    const decoded = jwt.verify(token, getJwtSecret())
     
     // Allow test admin without database
     if (decoded.id === 'test-admin-id') {

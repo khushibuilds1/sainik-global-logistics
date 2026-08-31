@@ -448,7 +448,7 @@ export function MissionVision() {
             YOUR EXISTING DESIGN
         ====================================================== */}
 
-        <div className="grid md:grid-cols-3 gap-5 lg:gap-6 max-w-6xl mx-auto">
+        <div className="mt-20 md:mt-28 grid md:grid-cols-3 gap-5 lg:gap-6 max-w-6xl mx-auto">
 
           {foundationItems.map((item, i) => {
 

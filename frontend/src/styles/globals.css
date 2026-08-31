@@ -81,11 +81,24 @@ body {
   }
   .btn-primary:hover::after { @apply opacity-[0.06]; }
 
+  .btn-red {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-full bg-brand-red px-7 py-3.5
+           text-sm font-display font-bold uppercase tracking-[0.18em] text-white
+           shadow-[0_14px_34px_rgba(240,6,79,0.35)] transition-all duration-300
+           hover:-translate-y-0.5 hover:bg-brand-red-dark hover:shadow-[0_20px_42px_rgba(240,6,79,0.5)]
+           overflow-hidden;
+  }
+  .btn-red::after {
+    content: '';
+    @apply absolute inset-0 bg-white opacity-0 transition-opacity duration-200;
+  }
+  .btn-red:hover::after { @apply opacity-[0.08]; }
+
   .btn-outline {
-    @apply inline-flex items-center gap-2 border border-white/20 text-white
-           font-display font-bold tracking-wider uppercase text-sm px-8 py-4
+    @apply inline-flex items-center gap-2 rounded-full border border-white/20 text-white
+           font-display font-bold tracking-wider uppercase text-sm px-7 py-3.5
            transition-all duration-300
-           hover:border-brand-red hover:text-brand-red;
+           hover:border-brand-red hover:text-brand-red hover:-translate-y-0.5;
   }
 
   /* Typography */
