@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import Image from 'next/image'
 
 const hubs = [
   { name: 'Mumbai', x: '68%', y: '42%', major: true },
@@ -49,7 +50,7 @@ export function GlobalNetwork() {
           </motion.h2>
         </div>
 
-        {/* World map with routes */}
+        {/* Global network image */}
         <motion.div
           className="relative w-full"
           initial={{ opacity: 0 }}
@@ -57,48 +58,13 @@ export function GlobalNetwork() {
           transition={{ delay: 0.3 }}
         >
           <div className="relative aspect-[2/1] bg-brand-dark-3 border border-white/5 overflow-hidden">
-            {/* Grid overlay */}
-            <div className="absolute inset-0 grid-bg opacity-40" />
-
-            {/* SVG for routes */}
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 50" preserveAspectRatio="none">
-              {routes.map((r, i) => (
-                <motion.line
-                  key={i}
-                  x1={r.x1} y1={r.y1} x2={r.x2} y2={r.y2}
-                  stroke="rgba(240,6,79,0.3)"
-                  strokeWidth="0.15"
-                  strokeDasharray="0.5 0.5"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={inView ? { pathLength: 1, opacity: 1 } : {}}
-                  transition={{ delay: 0.5 + i * 0.15, duration: 1.5, ease: 'easeInOut' }}
-                />
-              ))}
-            </svg>
-
-            {/* Hub markers */}
-            {hubs.map((hub, i) => (
-              <motion.div
-                key={hub.name}
-                className="absolute transform -translate-x-1/2 -translate-y-1/2 group"
-                style={{ left: hub.x, top: hub.y }}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 0.8 + i * 0.08, duration: 0.4, type: 'spring' }}
-              >
-                <div className={`relative ${hub.major ? 'w-4 h-4' : 'w-2.5 h-2.5'}`}>
-                  <div className={`w-full h-full rounded-full bg-brand-red ${hub.major ? 'animate-pulse-red' : ''}`} />
-                  {hub.major && (
-                    <div className="absolute inset-0 rounded-full bg-brand-red/30 scale-150 animate-ping" />
-                  )}
-                </div>
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                  <div className="glass border border-white/10 px-2 py-1 whitespace-nowrap">
-                    <span className="font-mono text-[9px] text-white tracking-widest">{hub.name}</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+            <Image
+              src="/global-network.jpeg"
+              alt="Global logistics network across the world"
+              fill
+              sizes="(max-width: 1024px) 100vw, 1200px"
+              className="object-cover"
+            />
 
             {/* Corner labels */}
             <div className="absolute top-3 left-3">

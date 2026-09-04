@@ -19,7 +19,6 @@ export function AboutPreview() {
     <section ref={ref} className="section-padding bg-brand-dark-2 relative overflow-hidden">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Left — visual */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, x: -40 }}
@@ -27,9 +26,7 @@ export function AboutPreview() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="relative aspect-[4/3]">
-              {/* === Premium Collage Layout === */}
-
-              {/* Large Main Image - Container Port (takes 65% of space) */}
+              
               <motion.div
                 className="absolute top-0 left-0 w-[68%] h-[72%] overflow-hidden"
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -134,14 +131,7 @@ export function AboutPreview() {
                 animate={inView ? { opacity: 1, y: 0, x: 0 } : {}}
                 transition={{ delay: 0.7, duration: 0.5 }}
               >
-                {/* <div className="bg-brand-dark/85 backdrop-blur-md border-l-[3px] border-brand-red px-5 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
-                  <p className="font-display font-black text-4xl text-white leading-none">
-                    15<span className="text-brand-red">+</span>
-                  </p>
-                  <p className="font-mono text-[9px] text-white/70 tracking-[0.25em] uppercase mt-1">
-                    Years Experience
-                  </p>
-                </div> */}
+               
               </motion.div>
 
               {/* Services Mini Tag (Top Right Area) */}
@@ -175,45 +165,6 @@ export function AboutPreview() {
               <div className="absolute bottom-0 left-0 w-10 h-10 border-l-2 border-b-2 border-brand-red/60 z-10" />
               <div className="absolute bottom-0 right-0 w-10 h-10 border-r-2 border-b-2 border-brand-red/60 z-10" />
 
-              {/* Animated Floating Ship Icon over main image
-              <motion.div
-                className="absolute top-[58%] left-[60%] w-11 h-11 rounded-full bg-brand-red/95 flex items-center justify-center shadow-[0_0_30px_rgba(240,6,79,0.7)] z-10"
-                initial={{ scale: 0, y: 20 }}
-                animate={inView ? {
-                  scale: [0, 1, 1, 1, 0],
-                  y: [20, 0, -6, 0, 20],
-                  opacity: [0, 1, 1, 1, 0],
-                } : {}}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  delay: 1,
-                  times: [0, 0.15, 0.5, 0.85, 1],
-                  ease: 'easeInOut',
-                }}
-              >
-                <Ship size={18} className="text-white" />
-              </motion.div> */}
-
-              {/* Animated Floating Package Icon
-              <motion.div
-                className="absolute bottom-[33%] right-[35%] w-9 h-9 rounded-full bg-white/95 flex items-center justify-center shadow-[0_0_25px_rgba(255,255,255,0.5)] z-10"
-                initial={{ scale: 0, x: -15 }}
-                animate={inView ? {
-                  scale: [0, 1, 1, 1, 0],
-                  x: [-15, 0, 5, 0, -15],
-                  opacity: [0, 1, 1, 1, 0],
-                } : {}}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  delay: 3,
-                  times: [0, 0.12, 0.5, 0.88, 1],
-                  ease: 'easeInOut',
-                }}
-              >
-                <Package size={15} className="text-brand-dark" />
-              </motion.div> */}
             </div>
 
             {/* Floating TRUSTED Tag Bottom Right */}

@@ -116,28 +116,6 @@ export function HeroSection() {
               </Link>
             </motion.div>
 
-            {/* Service chips
-            <motion.div
-              className="flex flex-wrap gap-3"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.55 }}
-            >
-              {[
-                { icon: Ship, label: 'Ocean Freight' },
-                { icon: Plane, label: 'Air Freight' },
-                { icon: Truck, label: 'Road Transport' },
-                { icon: Package, label: 'Customs Clearance' },
-              ].map(({ icon: Icon, label }) => (
-                <div
-                  key={label}
-                  className="flex items-center gap-2 px-4 py-2 bg-white/[0.03] border border-white/10 hover:border-brand-red/40 transition-colors cursor-default"
-                >
-                  <Icon size={14} className="text-brand-red" />
-                  <span className="text-white/60 text-xs font-mono uppercase tracking-wider">{label}</span>
-                </div>
-              ))}
-            </motion.div> */}
           </div>
 
           {/* Right — Logistics Visual */}
@@ -212,16 +190,7 @@ export function HeroSection() {
 
               {/* Logo and Text */}
               <div className="relative z-10 flex flex-col items-center gap-3">
-                {/* Logo in circle */}
-                {/* <div className="w-20 h-20 rounded-full bg-white border-4 border-brand-red/60 flex items-center justify-center shadow-[0_0_30px_rgba(240,6,79,0.4)] overflow-hidden">
-                  <Image
-                    src="/Sainik Logo.jpg"
-                    alt="Sainik Global Logistics"
-                    width={64}
-                    height={64}
-                    className="object-contain"
-                  />
-                </div> */}
+                
 
                 {/* Brand text */}
                 <div className="text-center">

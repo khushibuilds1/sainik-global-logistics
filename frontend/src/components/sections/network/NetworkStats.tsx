@@ -7,19 +7,19 @@ import { Ship, Plane, Truck, BarChart3 } from 'lucide-react'
 const stats = [
   {
     icon: Ship,
-    value: '1000+',
+    value: '400+',
     label: 'Weekly Sea Shipments',
     description: 'FCL & LCL across major trade routes'
   },
   {
     icon: Plane,
-    value: '500+',
+    value: '300+',
     label: 'Monthly Air Shipments',
     description: 'Direct & consolidated services'
   },
   {
     icon: Truck,
-    value: '2000+',
+    value: '400+',
     label: 'Land Movements',
     description: 'Domestic & cross-border'
   },

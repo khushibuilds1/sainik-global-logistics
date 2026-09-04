@@ -6,13 +6,11 @@ import { GlobalNetwork } from '@/components/sections/GlobalNetwork'
 import { WhyChooseUs } from '@/components/sections/WhyChooseUs'
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 import { QuoteSection } from '@/components/sections/QuoteSection'
-import { ClientsMarquee } from '@/components/sections/ClientsMarquee'
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <ClientsMarquee />
       <AboutPreview />
       <ServicesSection />
       <StatsSection />

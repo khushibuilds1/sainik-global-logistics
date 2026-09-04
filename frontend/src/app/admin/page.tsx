@@ -80,7 +80,10 @@ export default function AdminDashboard() {
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null)
   const [statusFilter, setStatusFilter] = useState<string>('all')
 
-  const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001'
+  // const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001'
+  const apiBase =
+  process.env.NEXT_PUBLIC_API_URL ||
+  'https://sainik-global-backend.onrender.com'
 
   const login = async (e: React.FormEvent) => {
     e.preventDefault()
